@@ -11,7 +11,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:3.3.4")
     implementation(project(":commons"))
   //  implementation("org.flywaydb:flyway-core:10.0.0")
-    runtimeOnly("org.postgresql:postgresql:9.3-1101-jdbc41")
+    runtimeOnly("org.postgresql:postgresql:42.7.4")
 }
 
 springBoot {
