@@ -5,7 +5,7 @@ import com.wtench.StormCloud.repository.StormRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface DomainEntityService<T extends DomainEntity, A extends StormRepository> {
+public interface DomainEntityService<T, A> {
 
     A getRepository();
 

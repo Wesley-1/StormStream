@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public abstract class DomainEntityListener<T extends DomainEntity, A extends StormRepository> {
+public abstract class DomainEntityListener<T, A> {
     private final ObjectMapper objectMapper;
 
     private final DomainEntityService<T, A> entityService;

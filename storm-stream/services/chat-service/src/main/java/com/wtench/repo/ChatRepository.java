@@ -1,18 +1,13 @@
 package com.wtench.repo;
 
+import com.wtench.StormCloud.domain.type.AbstractDomainEntity;
 import com.wtench.StormCloud.repository.type.StormCrudRepository;
 import com.wtench.domain.ChatMessage;
-import jakarta.persistence.MappedSuperclass;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-@MappedSuperclass
+import java.io.Serializable;
+
+@Repository
 public interface ChatRepository extends StormCrudRepository<ChatMessage, String> {
-
-    @NotNull
-    @Override
-    <S extends ChatMessage> S save(S entity);
-
-    @NotNull
-    @Override
-    Iterable<ChatMessage> findAll();
 }

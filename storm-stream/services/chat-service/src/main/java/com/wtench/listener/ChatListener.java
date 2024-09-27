@@ -60,9 +60,8 @@ public class ChatListener extends DomainEntityListener<ChatMessage, ChatReposito
 
     @Override
     public ChatMessage entityFromPayload(Map<String, Object> payload) {
-        return ChatMessage.builder()
-                .message((String) payload.get("message"))
-                .id((Long) payload.get("id"))
-                .build();
+        ChatMessage message = ChatMessage.builder().message((String) payload.get("message")).build();
+        message.setId((Long) payload.get("id"));
+        return message;
     }
 }

@@ -4,27 +4,18 @@ import com.wtench.StormCloud.domain.DomainEntity;
 import com.wtench.StormCloud.repository.StormRepository;
 import com.wtench.StormCloud.repository.type.StormCrudRepository;
 import com.wtench.StormCloud.services.DomainEntityService;
+import com.wtench.StormCloud.services.StormService;
 import lombok.Getter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Getter
-public class BasicCrudService<T extends DomainEntity, A> implements DomainEntityService<T, StormCrudRepository<T, A>> {
+public abstract class BasicCrudService<A, T extends StormRepository> implements DomainEntityService<A, T> {
 
-    private final StormCrudRepository<T, A> repository;
+    private final T repository;
 
-    public BasicCrudService(StormCrudRepository<T, A> repository) {
+    public BasicCrudService(T repository) {
         this.repository = repository;
-    }
-
-    @Override
-    public T save(T entity) {
-        return repository.save(entity);
-    }
-
-    @Override
-    public Page<T> list(Pageable pageable) {
-        return repository.findAll(pageable);
     }
 }
