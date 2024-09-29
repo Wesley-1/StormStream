@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaNotificationService extends KafkaService<Notification> {
     public KafkaNotificationService(ObjectMapper objectMapper, KafkaTemplate<String, String> kafkaTemplate) {
-        super(objectMapper, kafkaTemplate, "notification_published");
+        super(objectMapper, kafkaTemplate, "notification.published");
     }
 }

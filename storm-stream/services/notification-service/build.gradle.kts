@@ -1,3 +1,7 @@
+plugins {
+    id("org.springframework.boot") version "3.3.4"
+}
+
 dependencies {
     implementation("org.springframework.kafka:spring-kafka:3.2.4")
     implementation("org.springframework.cloud:spring-cloud-stream:4.1.3")
@@ -5,4 +9,18 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.4")
     implementation("org.springframework.data:spring-data-jpa:3.3.4")
     implementation("org.springframework.boot:spring-boot-starter-web:3.3.4")
+    implementation(project(":commons"))
+    implementation("org.postgresql:postgresql:42.7.4")
+    runtimeOnly("ch.qos.logback:logback-core:1.5.8")
+
+
+}
+
+
+
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "com.wtench.ChatPersistenceApplication"
+    }
 }

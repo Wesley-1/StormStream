@@ -47,10 +47,13 @@ public class ChatListener extends DomainEntityListener<ChatMessage, ChatReposito
                     savedMessage.getId()
             );
 
-            notificationKafkaService.publish(Notification.builder().service("chat_service").timestamp(LocalDateTime.now()).message(savedMessage.getMessage()).build());
+            notificationKafkaService.publish(Notification.builder()
+                    .service("chat_service")
+                    .timestamp(LocalDateTime.now())
+                    .message(savedMessage.getMessage())
+                    .build());
 
-        } catch(RuntimeException ignored) {
-        }
+        } catch(RuntimeException ignored) {}
 
         return in;
     }

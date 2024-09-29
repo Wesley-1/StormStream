@@ -42,6 +42,26 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=test
+      - POSTGRES_DB=chat
+    ports:
+      - "5432:5432"
+  notification-persistence:
+    build: ./services/notification-service
+    container_name: notification-persistence
+    depends_on:
+      - broker
+    ports:
+      - "9092:9091"
+    environment:
+      SPRING_PROFILES_ACTIVE: 'production'
+      STORM_KAFKA_TOPIC: 'notification.published'
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: 'broker:9090'
+  notification_db:
+    image: postgres
+    container_name: notification_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=notifications
     ports:
       - "5432:5432"
