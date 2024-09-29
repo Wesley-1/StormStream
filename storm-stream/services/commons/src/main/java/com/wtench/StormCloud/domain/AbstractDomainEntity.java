@@ -1,4 +1,4 @@
-package com.wtench.StormCloud.domain.type;
+package com.wtench.StormCloud.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

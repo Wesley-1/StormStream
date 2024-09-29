@@ -1,35 +1,35 @@
 package com.wtench.StormCloud.exceptions;
 
-import com.wtench.StormCloud.domain.DomainEntity;
+import com.wtench.StormCloud.domain.AbstractDomainEntity;
 import lombok.Getter;
 
 @Getter
 public class DomainEntityException extends RuntimeException{
 
-    private final DomainEntity entity;
+    private final AbstractDomainEntity<?> entity;
 
-    public DomainEntityException(DomainEntity entity) {
+    public DomainEntityException(AbstractDomainEntity entity) {
         this.entity = entity;
     }
 
-    public DomainEntityException(String message, DomainEntity entity) {
+    public DomainEntityException(String message, AbstractDomainEntity entity) {
         super(message);
         this.entity  = entity;
     }
 
-    public DomainEntityException(Throwable cause, DomainEntity entity) {
+    public DomainEntityException(Throwable cause, AbstractDomainEntity entity) {
         super(cause);
         this.entity  = entity;
     }
 
-    public DomainEntityException(String message, Throwable cause, DomainEntity entity) {
+    public DomainEntityException(String message, Throwable cause, AbstractDomainEntity entity) {
         super(message, cause);
         this.entity  = entity;
     }
 
     public DomainEntityException(String message, Throwable cause, boolean enableSuppression,
-                                boolean writableStackTrace, DomainEntity entity) {
+                                boolean writableStackTrace, Object entity) {
         super(message, cause, enableSuppression, writableStackTrace);
-        this.entity  = entity;
+        this.entity = (AbstractDomainEntity<?>) entity;
     }
 }

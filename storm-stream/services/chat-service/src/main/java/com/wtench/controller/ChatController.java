@@ -26,6 +26,10 @@ public class ChatController implements DomainEntityController<MessageDTO, ChatMe
         this.service = service;
     }
 
+    public ChatController() {
+        this.service = null;
+    }
+
     @Override
     @GetMapping(path="/get/chat-messages")
     public Page<MessageDTO> list(Pageable pageable) {
@@ -41,6 +45,5 @@ public class ChatController implements DomainEntityController<MessageDTO, ChatMe
     public MessageDTO mapEntity(ChatMessage entity) {
         return MessageDTO.builder().message(entity.getMessage()).id(entity.getId()).build();
     }
-
 
 }

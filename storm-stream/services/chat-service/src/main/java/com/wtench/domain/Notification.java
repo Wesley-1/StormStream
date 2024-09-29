@@ -1,18 +1,18 @@
 package com.wtench.domain;
 
-import com.wtench.StormCloud.domain.DomainEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.wtench.StormCloud.domain.AbstractDomainEntity;
+import jakarta.persistence.Entity;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Notification implements DomainEntity {
+@Entity
+public class Notification extends AbstractDomainEntity<Long> {
     private String message;
     private LocalDateTime timestamp;
     private String service;

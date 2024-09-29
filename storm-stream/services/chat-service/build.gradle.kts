@@ -10,17 +10,15 @@ dependencies {
     implementation("org.springframework.data:spring-data-jpa:3.3.4")
     implementation("org.springframework.boot:spring-boot-starter-web:3.3.4")
     implementation(project(":commons"))
-  //  implementation("org.flywaydb:flyway-core:10.0.0")
+    // implementation("org.flywaydb:flyway-core:10.0.0")
     implementation("org.postgresql:postgresql:42.7.4")
+    runtimeOnly("ch.qos.logback:logback-core:1.5.8")
+
+
 }
 
-springBoot {
-    mainClass.set("com.wtench.ChatPersistenceApplication")
-}
 
-application {
-    mainClass.set("com.wtench.ChatPersistenceApplication")
-}
+
 
 tasks.jar {
     manifest {
