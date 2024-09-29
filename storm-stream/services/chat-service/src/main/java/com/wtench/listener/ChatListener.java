@@ -22,7 +22,6 @@ public class ChatListener extends DomainEntityListener<ChatMessage, ChatReposito
     private final DomainEntityService<ChatMessage, ChatRepository> entityService;
     private final KafkaService<Notification> notificationKafkaService;
 
-    @Autowired
     public ChatListener(ObjectMapper objectMapper,
                         DomainEntityService<ChatMessage, ChatRepository> entityService,
                         KafkaService<Notification> notificationKafkaService) {

@@ -44,14 +44,14 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=chat
     ports:
-      - "5432:5432"
+      - "5434:5432"
   notification-persistence:
     build: ./services/notification-service
     container_name: notification-persistence
     depends_on:
       - broker
     ports:
-      - "9092:9091"
+      - "9093:9091"
     environment:
       SPRING_PROFILES_ACTIVE: 'production'
       STORM_KAFKA_TOPIC: 'notification.published'
@@ -64,4 +64,4 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=notifications
     ports:
-      - "5432:5432"
+      - "5433:5432"

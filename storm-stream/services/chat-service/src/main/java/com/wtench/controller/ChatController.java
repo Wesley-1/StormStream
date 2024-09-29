@@ -9,6 +9,7 @@ import com.wtench.response.MessageDTO;
 import com.wtench.services.ChatService;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,9 @@ public class ChatController implements DomainEntityController<MessageDTO, ChatMe
 
     private final ChatService service;
 
+    @Autowired
     public ChatController(ChatService service) {
         this.service = service;
-    }
-
-    public ChatController() {
-        this.service = null;
     }
 
     @Override
