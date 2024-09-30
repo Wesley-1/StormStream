@@ -13,12 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.NavigableMap;
+import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Getter
 @RestController
+@RequestMapping("api/chat")
 public class ChatController implements DomainEntityController<MessageDTO, ChatMessage, ChatRepository> {
 
     private final ChatService service;
@@ -29,12 +33,12 @@ public class ChatController implements DomainEntityController<MessageDTO, ChatMe
     }
 
     @Override
-    @GetMapping(path="/get/chat-messages")
+    @GetMapping(path="/allMessages")
     public Page<MessageDTO> list(Pageable pageable) {
-        return ResponseEntity.ok(getService().getRepository().findAll(pageable).map(this::mapEntity)).getBody();
+        return getService().getRepository().findAll(pageable).map(this::mapEntity);
     }
 
-    @PostMapping(value = "/post/chat-messages")
+    @PostMapping(value = "/addMessage")
     public ChatMessage post(ChatMessage message) {
         return message;
     }
